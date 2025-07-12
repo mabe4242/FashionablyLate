@@ -17,9 +17,9 @@
 6. `php artisan db:seed`
 
 ## 使用技術（実行環境）
-- PHP 8.0
-- Laravel 10.0
-- MySQL 8.0
+- PHP 7.4.9
+- Laravel 8.83.8
+- MySQL 8.0.26
 
 ## ER図
 ![ER図](./er-diagram.png)  
