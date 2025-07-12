@@ -16,7 +16,7 @@
         </div>
 
         {{-- ！！！！！！！ここに検索など！！！！！！！ --}}
-        
+
         <div class="contact-table">
             <table class="contact-table__inner">
                 <tr class="contact-table__row">
@@ -76,7 +76,7 @@
                                             <div class="detail-value">{{ $contact['detail'] }}</div>
                                         </div>
                                         <div class="modal-footer">
-                                            <form action="" method="POST">
+                                            <form action="/delete" method="POST">
                                                 @method('DELETE')
                                                 @csrf
                                                 <input type="hidden" name="id" value="{{ $contact['id'] }}">

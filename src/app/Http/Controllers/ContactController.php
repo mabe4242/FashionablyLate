@@ -45,7 +45,7 @@ class ContactController extends Controller
     }
 
     public function index(){
-        $contacts = Contact::all();//リレーションはまだ
+        $contacts = Contact::with('category')->get();
         foreach ($contacts as $contact){
             $contact['name'] = CheckFormService::makeFullName($contact['first_name'], $contact['last_name']);
             $contact['gender_type'] = CheckFormService::checkGender((int)$contact['gender']);
@@ -53,5 +53,10 @@ class ContactController extends Controller
         $categories = Category::all();
 
         return view('contacts/index', compact('contacts', 'categories'));
+    }
+
+    public function destroy(Request $request){
+        Contact::find($request->id)->delete();
+        return redirect('/admin')->with('message', 'お問合せを削除しました');
     }
 }
