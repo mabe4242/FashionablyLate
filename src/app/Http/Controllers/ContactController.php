@@ -7,6 +7,7 @@ use App\Models\Contact;
 use App\Models\Category;
 use App\Http\Requests\ContactRequest;
 use App\Services\CheckFormService;
+use Symfony\Component\HttpFoundation\StreamedResponse;
 
 class ContactController extends Controller
 {
@@ -76,5 +77,34 @@ class ContactController extends Controller
         }
         $categories = Category::all();
         return view('contacts/index', compact('contacts', 'categories'));
+    }
+
+    public function export(){
+        $contacts = Contact::with('category')->get(); // 必要に応じて条件を絞る
+        $response = new StreamedResponse(function () use ($contacts) {
+            $handle = fopen('php://output', 'w');
+            fputcsv($handle, ['ID', '名前', '性別', 'メールアドレス', 'お問い合わせの種類', 
+            '電話番号', '住所', '建物名', 'お問い合わせ内容', '日付']);
+            foreach ($contacts as $contact) {
+                fputcsv($handle, [
+                    $contact->id,
+                    CheckFormService::makeFullName($contact->first_name, $contact->last_name),
+                    CheckFormService::checkGender($contact->gender),
+                    $contact->email,
+                    $contact->category->content,
+                    $contact->tel,
+                    $contact->address,
+                    $contact->building,
+                    $contact->detail,
+                    $contact->created_at->format('Y-m-d H:i:s'),
+                ]);
+            }
+            fclose($handle);
+        });
+
+        $filename = 'contacts_' . now()->format('Ymd_His') . '.csv';
+        $response->headers->set('Content-Type', 'text/csv');
+        $response->headers->set('Content-Disposition', "attachment; filename=\"$filename\"");
+        return $response;
     }
 }

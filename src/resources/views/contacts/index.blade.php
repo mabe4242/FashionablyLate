@@ -51,7 +51,7 @@
         </form>
         <div class="button-area">
             <div class="export-button">
-                <a href="" class="export-button__text">エクスポート</a>
+                <a href="/export" class="export-button__text">エクスポート</a>
             </div>
             <div class="pagination">
                 {{ $contacts->links('vendor.pagination.default') }}
