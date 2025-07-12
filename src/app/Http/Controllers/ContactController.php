@@ -34,4 +34,13 @@ class ContactController extends Controller
         $contact = $request->session()->get('form_input');
         return redirect()->route('contacts.create')->withInput($contact);
     }
+
+    public function store(ContactRequest $request){
+        $contact = $request->only(['category_id', 'first_name', 'last_name', 
+        'gender', 'email', 'tel', 'address', 'building', 'detail']);
+        Contact::create($contact);
+        $request->session()->forget('form_input');
+
+        return view('contacts/thanks');
+    }
 }
