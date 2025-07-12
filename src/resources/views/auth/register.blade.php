@@ -4,6 +4,12 @@
     <link rel="stylesheet" href="{{ asset('css/auth/register.css') }}">
 @endsection
 
+@section('auth')
+    <form class="auth-form" action="/login" method="GET">
+        <button class="header-nav__button">login</button>
+    </form>
+@endsection
+
 @section('content')
     <div class="register-bg">
         <h2 class="register-title">Register</h2>

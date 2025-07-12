@@ -19,12 +19,7 @@
                     </a>
                 </div>
                 <div class="header-right">
-                    @if (Auth::check())
-                        <form class="form" action="/logout" method="POST">
-                            @csrf
-                            <button class="header-nav__button">ログアウト</button>
-                        </form>
-                    @endif
+                    @yield('auth')
                 </div>
             </div>
         </div>

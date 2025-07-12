@@ -67,3 +67,22 @@
     display: flex;
     align-items: center;
 }
+
+.auth-form .header-nav__button {
+    background-color: #f0f0f0;
+    color: #d9c6b5;
+    border: 1px solid #d9c6b5;
+    font-family: 'Inika', serif;
+    padding: 5px 16px;
+    font-size: 16px;
+    cursor: pointer;
+    border-radius: 0;
+    width: 100px;
+    text-align: center;
+    transition: background-color 0.2s ease;
+    margin-right: 70px;
+}
+
+.auth-form .header-nav__button:hover {
+    background-color: #e0e0e0;
+}

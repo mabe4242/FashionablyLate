@@ -5,6 +5,15 @@
     <link rel="stylesheet" href="{{ asset('css/parts/pagination.css') }}">
 @endsection
 
+@section('auth')
+    @if (Auth::check())
+        <form class="auth-form" action="/logout" method="POST">
+            @csrf
+            <button class="header-nav__button">logout</button>
+        </form>
+    @endif
+@endsection
+
 @section('content')
     <div class="contact__alert">
         @if (session('message'))
