@@ -2,6 +2,7 @@
 
 @section('css')
     <link rel="stylesheet" href="{{ asset('css/contacts/index.css') }}" />
+    <link rel="stylesheet" href="{{ asset('css/parts/pagination.css') }}">
 @endsection
 
 @section('content')
@@ -17,6 +18,14 @@
 
         {{-- ！！！！！！！ここに検索など！！！！！！！ --}}
 
+        <div class="button-area">
+            <div class="export-button">
+                <a href="/" class="export-button__text">エクスポート</a>
+            </div>
+            <div class="pagination">
+                {{ $contacts->links('vendor.pagination.default') }}
+            </div>
+        </div>
         <div class="contact-table">
             <table class="contact-table__inner">
                 <tr class="contact-table__row">

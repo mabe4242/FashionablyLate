@@ -45,7 +45,7 @@ class ContactController extends Controller
     }
 
     public function index(){
-        $contacts = Contact::with('category')->get();
+        $contacts = Contact::with('category')->paginate(7);
         foreach ($contacts as $contact){
             $contact['name'] = CheckFormService::makeFullName($contact['first_name'], $contact['last_name']);
             $contact['gender_type'] = CheckFormService::checkGender((int)$contact['gender']);
