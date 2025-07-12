@@ -64,7 +64,9 @@ class ContactController extends Controller
         $keyword = $request->keyword;
         $normalizedKeyword = preg_replace('/\s+/u', '', $keyword);
         $contacts = Contact::with('category')
+                    ->GenderSearch($request->gender)
                     ->CategorySearch($request->category_id)
+                    ->DateSearch($request->created_at)
                     ->KeywordSearch($normalizedKeyword)
                     ->paginate(7)
                     ->appends($request->all());
