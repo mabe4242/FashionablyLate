@@ -45,15 +45,12 @@ class ContactRequest extends FormRequest
             $tel1 = $this->input('tel1');
             $tel2 = $this->input('tel2');
             $tel3 = $this->input('tel3');
-
             // いずれかが未入力ならエラー（tel1 に対してまとめて表示）
             if (empty($tel1) || empty($tel2) || empty($tel3)) {
                 $validator->errors()->add('tel1', '電話番号をすべて入力してください。');
                 return;
             }
-
             $tel = $tel1 . $tel2 . $tel3;
-
             if (!preg_match('/^\d{10,11}$/', $tel)) {
                 $validator->errors()->add('tel1', '電話番号の桁数は10桁または11桁で入力してください。');
             }
