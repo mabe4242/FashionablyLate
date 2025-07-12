@@ -28,13 +28,36 @@ class ContactRequest extends FormRequest
             'last_name' => ['required', 'string', 'max:255'],
             'gender' => ['required'],
             'email' => ['required', 'string', 'email', 'max:255'],
-            //電話番号のバリデーションはどうするがいいだろう？
-            //'tel' => ['required', 'numeric', 'digits_between:10,11'],
+            // 一旦すべてnullableにする（エラーはwithValidatorでまとめる）
+            'tel1' => ['nullable', 'numeric', 'digits_between:1,5'],
+            'tel2' => ['nullable', 'numeric', 'digits_between:1,5'],
+            'tel3' => ['nullable', 'numeric', 'digits_between:1,5'],
             'address' => ['required', 'string', 'max:255'],
             'building' => ['nullable', 'string', 'max:255'],
             'category_id' => ['required'],
             'detail' => ['required', 'string', 'max:120']
         ];
+    }
+
+    public function withValidator($validator)
+    {
+        $validator->after(function ($validator) {
+            $tel1 = $this->input('tel1');
+            $tel2 = $this->input('tel2');
+            $tel3 = $this->input('tel3');
+
+            // いずれかが未入力ならエラー（tel1 に対してまとめて表示）
+            if (empty($tel1) || empty($tel2) || empty($tel3)) {
+                $validator->errors()->add('tel1', '電話番号をすべて入力してください。');
+                return;
+            }
+
+            $tel = $tel1 . $tel2 . $tel3;
+
+            if (!preg_match('/^\d{10,11}$/', $tel)) {
+                $validator->errors()->add('tel1', '電話番号の桁数は10桁または11桁で入力してください。');
+            }
+        });
     }
 
     public function messages()
@@ -50,9 +73,9 @@ class ContactRequest extends FormRequest
             'email.string' => 'メールアドレスを文字列で入力してください',
             'email.email' => 'メールアドレスはメール形式で入力してください',
             'email.max' => 'メールアドレスを255文字以下で入力してください',
-        //  'tel.required' => '電話番号を入力してください',
-        //  'tel.numeric' => '電話番号を数値で入力してください',
-        //  'tel.digits_between' => '電話番号を10桁から11桁の間で入力してください',
+            'tel1.numeric' => '電話番号は数字で入力してください。',
+            'tel2.numeric' => '電話番号は数字で入力してください。',
+            'tel3.numeric' => '電話番号は数字で入力してください。',
             'address.required' => '住所を入力してください',
             'category_id.required' => 'お問い合わせの種類を選択してください',
             'detail.required' => 'お問い合わせ内容を入力してください',

@@ -36,7 +36,7 @@ class ContactController extends Controller
         return redirect()->route('contacts.create')->withInput($contact);
     }
 
-    public function store(ContactRequest $request){
+    public function store(Request $request){
         $contact = $request->only(['category_id', 'first_name', 'last_name', 
         'gender', 'email', 'tel', 'address', 'building', 'detail']);
         Contact::create($contact);

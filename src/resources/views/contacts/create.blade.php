@@ -87,7 +87,7 @@
                         <input type="tel" name="tel3" placeholder="5678" maxlength="4" value="{{ old('tel3') }}" />
                     </div>
                     <div class="form__error">
-                        @error('tel')
+                        @error('tel1')
                             {{ $message }}
                         @enderror
                     </div>
