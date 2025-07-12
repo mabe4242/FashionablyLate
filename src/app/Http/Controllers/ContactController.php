@@ -61,9 +61,12 @@ class ContactController extends Controller
     }
 
     public function search(Request $request){
+        $keyword = $request->keyword;
+        $normalizedKeyword = preg_replace('/\s+/u', '', $keyword);
         $contacts = Contact::with('category')
                     ->CategorySearch($request->category_id)
-                    ->KeywordSearch($request->keyword)->paginate(7)
+                    ->KeywordSearch($normalizedKeyword)
+                    ->paginate(7)
                     ->appends($request->all());
         foreach ($contacts as $contact){
             $contact['name'] = CheckFormService::makeFullName($contact['first_name'], $contact['last_name']);
