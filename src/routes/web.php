@@ -3,6 +3,6 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\ContactController;
 
-Route::get('/', [ContactController::class, 'create']);
+Route::get('/', [ContactController::class, 'create'])->name('contacts.create');
 Route::post('/contacts/confirm', [ContactController::class, 'confirm']);
-
+Route::get('/contacts/back', [ContactController::class, 'back'])->name('contacts.back');

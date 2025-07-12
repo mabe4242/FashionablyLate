@@ -9,7 +9,7 @@
         <div class="confirm__heading">
             <h2>Confirm</h2>
         </div>
-        <form class="form" action="" method="POST">
+        <form class="form" action="/contacts" method="POST">
             @csrf
             <div class="confirm-table">
                 <table class="confirm-table__inner">
@@ -73,7 +73,7 @@
                     <button class="form__button-submit" type="submit">送信</button>
                 </div>
                 <div class="form__button">
-                    {{-- <a href="/contacts/back" class="button-back">修正</a> --}}
+                    <a href="/contacts/back" class="button-back">修正</a>
                 </div>
             </div>
         </form>
