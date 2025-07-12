@@ -43,4 +43,15 @@ class ContactController extends Controller
 
         return view('contacts/thanks');
     }
+
+    public function index(){
+        $contacts = Contact::all();//リレーションはまだ
+        foreach ($contacts as $contact){
+            $contact['name'] = CheckFormService::makeFullName($contact['first_name'], $contact['last_name']);
+            $contact['gender_type'] = CheckFormService::checkGender((int)$contact['gender']);
+        }
+        $categories = Category::all();
+
+        return view('contacts/index', compact('contacts', 'categories'));
+    }
 }

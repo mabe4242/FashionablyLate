@@ -1,0 +1,412 @@
+.contact__alert--success {
+    padding: 10px 30px;
+    border-color: #badbcc;
+    background-color: #d1e7dd;
+    color: #0f5132;
+}
+
+.contact__alert--danger {
+    padding: 10px 0;
+    border-color: #f5c2c7;
+    background-color: #f8d7da;
+    color: #842029;
+}
+
+.contact__alert--danger ul {
+    margin: 0;
+}
+
+.contact__content {
+    margin: 0 auto;
+    padding: 10px 50px;
+    max-width: 1230px;
+}
+
+.section__title {
+    margin: 0 auto;
+    width: 70%;
+    text-align: center;
+    font-size: 1.3rem;
+    color: #8B7969;
+    font-family: 'Inika', serif;
+}
+
+.search-form {
+    display: flex;
+    justify-content: space-between;
+    margin: 0 auto;
+    margin-bottom: 15px;
+    width: 100%;
+    text-align: center;
+}
+
+.search-form__item {
+    display: flex;
+    width: 70%;
+    gap: 20px;
+}
+
+.search-form__item-input {
+    margin-right: 10px;
+    padding: 10px;
+    width: 350px;
+    height: 40px;
+    border: 1px solid #e3ded9;
+    background: #fbfbfb;
+}
+
+.search-form__item input::placeholder {
+    color: #beb1a6;
+    font-size: 0.9rem;
+    text-align: center;
+}
+
+.select-wrap {
+    position: relative;
+    display: inline-block;
+}
+
+.select-wrap::after {
+    content: '▼';
+    position: absolute;
+    right: 10px;
+    top: 50%;
+    transform: translateY(-50%);
+    pointer-events: none;
+    font-size: 12px;
+    color: #e0dfde;
+}
+
+.search-form__item-select {
+    padding: 10px;
+    height: 40px;
+    border: 1px solid #e3ded9;
+    appearance: none;
+    padding-right: 2em;
+    background-color: #f4f4f4;
+    color: #8B7969;
+}
+
+.search-form__button {
+    width: 20%;
+}
+
+.search-form__button-submit,
+.reset-button {
+    padding: 10px;
+    width: 100px;
+    height: 40px;
+    border: none;
+    background: #8b756a;
+    color: #ffffff;
+    cursor: pointer;
+}
+
+.reset-button {
+    display: inline-block;
+    background-color: #d9c6b5;
+}
+
+.reset-button__text {
+    text-decoration: none;
+    color: #ffffff;
+}
+
+.reset-button:hover {
+    background-color: #cbb298;
+}
+
+.button-area {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.export-button {
+    width: 130px;
+    height: 40px;
+    text-align: center;
+    background-color: #e1dbd6;
+    padding: 10px;
+    border: none;
+    cursor: pointer;
+    opacity: 0.6;
+}
+
+.export-button__text {
+    color: #8B7969;
+    text-decoration: none;
+}
+
+svg.w-5.h-5 {
+    width: 30px;
+    height: 30px;
+}
+
+.contact-table {
+    margin: 30px auto;
+    width: 100%;
+    max-width: 1230px;
+    text-align: center;
+    border-collapse: separate;
+    border-spacing: 0;
+}
+
+.contact-table__inner {
+    width: 100%;
+    border-collapse: separate;
+    border-spacing: 0;
+    table-layout: fixed;
+}
+
+.contact-table__row {
+    border-bottom: 1px solid #ddd;
+}
+
+.contact-table__header {
+    padding: 12px 8px;
+    text-align: left;
+    font-weight: bold;
+    background: #8B7969;
+    border-bottom: 2px solid #ddd;
+    color: #ffffff;
+}
+
+.contact-table__header-span {
+    margin-right: 40%;
+}
+
+.contact-table__item:first-of-type {
+    padding: 12px;
+    width: 90%;
+}
+
+.contact-table__item {
+    padding: 10px 8px;
+    text-align: left;
+    border-bottom: 1px solid #ddd;
+    font-size: 15px;
+    word-break: break-all;
+    color: #8B7969;
+    font-family: 'Inika', serif;
+    font-size: 1.1rem;
+}
+
+.update-form {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.update-form__item {
+    width: 40%;
+    line-height: 50%;
+}
+
+.update-form__item-input {
+    width: 100%;
+    outline: none;
+    border: none;
+}
+
+.update-form__item-p {
+    text-align: left;
+    font-size: 13px;
+}
+
+.update-form__button {
+    width: 50px;
+}
+
+.update-form__button-submit {
+    padding: 6px 16px;
+    border: none;
+    border-radius: 3px;
+    background: #007bff;
+    color: #fff;
+    cursor: pointer;
+    font-size: 14px;
+    transition: background 0.2s;
+    text-decoration: none;
+    display: inline-block;
+}
+
+.update-form__button-submit:hover {
+    background: #0056b3;
+}
+
+.delete-form__button {
+    width: 50px;
+}
+
+.delete-form__button-submit {
+    padding: 5px;
+    width: 100%;
+    border: none;
+    border-radius: 3px;
+    background: #ff0000;
+    color: #fff;
+    cursor: pointer;
+}
+
+.contact-table__inner th:nth-child(1),
+.contact-table__inner td:nth-child(1) {
+    width: 18%;
+    padding-left: 32px;
+}
+
+.contact-table__inner th:nth-child(2),
+.contact-table__inner td:nth-child(2) {
+    width: 12%;
+}
+
+.contact-table__inner th:nth-child(3),
+.contact-table__inner td:nth-child(3) {
+    min-width: 220px;
+    width: 28%;
+    word-break: break-all;
+}
+
+.contact-table__inner th:nth-child(4),
+.contact-table__inner td:nth-child(4) {
+    width: 28%;
+}
+
+.contact-table__inner th:nth-child(5),
+.contact-table__inner td:nth-child(5) {
+    width: 80px;
+    text-align: center;
+}
+
+.contact-table__inner th:not(:last-child),
+.contact-table__inner td:not(:last-child) {
+    padding-right: 32px;
+}
+
+/* ここからモーダル用 */
+.modal-overlay {
+    position: fixed;
+    inset: 0;
+    background-color: rgba(0, 0, 0, 0.6);
+    display: none;
+    justify-content: center;
+    align-items: center;
+    z-index: 1000;
+}
+
+.modal-toggle:checked + .modal-overlay {
+    display: flex;
+}
+
+/* モーダルの背景クリックで閉じる */
+.modal-background {
+    position: fixed;
+    inset: 0;
+}
+
+/* モーダル本体 */
+.modal-content {
+    position: relative;
+    background: white;
+    padding: 2.5em 3em;
+    width: 90%;
+    max-width: 800px;
+    border-radius: 10px;
+    box-shadow: 0 0 15px rgba(0, 0, 0, 0.3);
+    z-index: 1001;
+}
+
+.modal-close {
+    position: absolute;
+    top: 15px;
+    right: 15px;
+    width: 40px;
+    height: 40px;
+    border: 2px solid #8c7b6b;
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 1.5rem;
+    color: #8c7b6b;
+    cursor: pointer;
+    background-color: white;
+    transition: all 0.3s ease;
+}
+
+.modal-close:hover {
+    background-color: #f5f5f5;
+    color: #4b3f36;
+    border-color: #4b3f36;
+}
+
+/* トリガーボタン */
+.modal-open-button {
+    display: inline-block;
+    padding: 0.3em 1em;
+    background-color: #f4f4f4;
+    color: #d9c6b5;
+    border: 1px solid #d9c6b5;
+    font-size: 1rem;
+    cursor: pointer;
+    margin-top: 5px;
+}
+
+.modal-body {
+    padding: 1.5em 2em;
+    font-size: 17px;
+    line-height: 1.8;
+    color: #4b3f36;
+    font-family: sans-serif;
+}
+
+.detail-row {
+    display: flex;
+    margin-bottom: 1em;
+    align-items: flex-start;
+}
+
+.detail-label {
+    width: 150px;
+    font-weight: bold;
+    color: #6f5740;
+    text-align: left;
+}
+
+.detail-value {
+    flex: 1;
+    color: #333;
+    text-align: left;
+}
+
+.modal-footer {
+    text-align: center;
+    margin-top: 2em;
+}
+
+.delete-button {
+    background-color: #a33b00;
+    color: white;
+    border: none;
+    padding: 0.6em 1.5em;
+    border-radius: 4px;
+    font-size: 14px;
+    cursor: pointer;
+}
+
+.delete-button:hover {
+    background-color: #c34b00;
+}
+
+/* カレンダー入力のクリック範囲拡大用 */
+.search-form__item-date {
+    width: 160px;
+    padding: 6px 12px;
+    font-size: 14px;
+    color: #8B7969;
+    border: 1px solid #e3ded9;
+    cursor: pointer;
+    appearance: none;
+    -webkit-appearance: none;
+    background-color: #f4f4f4;
+}
