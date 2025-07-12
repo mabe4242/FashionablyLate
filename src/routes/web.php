@@ -10,4 +10,4 @@ Route::post('/contacts', [ContactController::class, 'store']);
 Route::get('/admin', [ContactController::class, 'index']);
 Route::delete('/delete', [ContactController::class, 'destroy']);
 Route::get('/search', [ContactController::class, 'search']);
-Route::get('/export', [ContactController::class, 'export']);
+Route::get('/export', [ContactController::class, 'export'])->name('contacts.export');

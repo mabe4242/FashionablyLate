@@ -61,26 +61,38 @@ class ContactController extends Controller
         return redirect('/admin')->with('message', 'お問合せを削除しました');
     }
 
-    public function search(Request $request){
+    protected function getFilteredContacts(Request $request)
+    {
         $keyword = $request->keyword;
         $normalizedKeyword = preg_replace('/\s+/u', '', $keyword);
-        $contacts = Contact::with('category')
+        $contacts =  Contact::with('category')
                     ->GenderSearch($request->gender)
                     ->CategorySearch($request->category_id)
                     ->DateSearch($request->created_at)
-                    ->KeywordSearch($normalizedKeyword)
-                    ->paginate(7)
-                    ->appends($request->all());
-        foreach ($contacts as $contact){
+                    ->KeywordSearch($normalizedKeyword);
+
+        return $contacts;
+    }
+
+    public function search(Request $request)
+    {
+        $query = $this->getFilteredContacts($request);
+        $contacts = $query->paginate(7)->appends($request->all());
+        foreach ($contacts as $contact) {
             $contact['name'] = CheckFormService::makeFullName($contact['first_name'], $contact['last_name']);
             $contact['gender_type'] = CheckFormService::checkGender((int)$contact['gender']);
         }
         $categories = Category::all();
+
         return view('contacts/index', compact('contacts', 'categories'));
     }
 
-    public function export(){
-        $contacts = Contact::with('category')->get(); // 必要に応じて条件を絞る
+    public function export(Request $request){
+        $contacts = $this->getFilteredContacts($request)->get();
+        foreach ($contacts as $contact) {
+            $contact['name'] = CheckFormService::makeFullName($contact['first_name'], $contact['last_name']);
+            $contact['gender_type'] = CheckFormService::checkGender((int)$contact['gender']);
+        }
         $response = new StreamedResponse(function () use ($contacts) {
             $handle = fopen('php://output', 'w');
             fputcsv($handle, ['ID', '名前', '性別', 'メールアドレス', 'お問い合わせの種類', 
@@ -105,6 +117,7 @@ class ContactController extends Controller
         $filename = 'contacts_' . now()->format('Ymd_His') . '.csv';
         $response->headers->set('Content-Type', 'text/csv');
         $response->headers->set('Content-Disposition', "attachment; filename=\"$filename\"");
+
         return $response;
     }
 }
