@@ -72,9 +72,8 @@
 }
 
 .form__button-submit {
-    padding: 10px;
-    width: 20%;
-    height: 50px;
+    width: 18%;
+    height: 40px;
     border: none;
     font-size: 1.0rem;
     background: #82756a;
@@ -108,6 +107,8 @@
     padding-left: 27px;
     font-size: 14px;
     color: #8B7969;
+    font-family: 'Inika', serif;
+    font-weight: normal;
 }
 
 .form__input--radio input[type="radio"] {
@@ -173,7 +174,6 @@
 
 .form__input--select select:focus {
     outline: none;
-    border-color: #007bff;
 }
 
 .custom-select::after {
@@ -189,10 +189,7 @@
 
 .form__group--start {
     justify-content: flex-start;
-}
-
-.form__group--category {
-    padding-left: 37px;
+    margin-top: 30px;
 }
 
 .form__input--text input::placeholder,
