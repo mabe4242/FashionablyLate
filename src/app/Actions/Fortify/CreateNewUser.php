@@ -2,31 +2,24 @@
 
 namespace App\Actions\Fortify;
 
+use App\Http\Requests\RegisterFormRequest;
 use App\Models\User;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Validator;
-use Illuminate\Validation\Rules\Password;
 use Laravel\Fortify\Contracts\CreatesNewUsers;
 
 class CreateNewUser implements CreatesNewUsers
 {
+    use PasswordValidationRules;
+
     public function create(array $input): User
     {
-        Validator::make($input, [
-            'name' => ['required', 'string', 'max:255'],
-            'email' => [
-                'required',
-                'string',
-                'email',
-                'max:255',
-                'unique:users',
-            ],
-            'password' => [
-                'required',
-                'string',
-                Password::min(8),
-            ],
-        ])->validate();
+        $request = new RegisterFormRequest();
+        $rules = $request->rules();
+        $messages = $request->messages();
+        $attributes = $request->attributes();
+
+        Validator::make($input, $rules, $messages, $attributes)->validate();
 
         return User::create([
             'name' => $input['name'],
