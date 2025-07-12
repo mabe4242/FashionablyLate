@@ -59,4 +59,17 @@ class ContactController extends Controller
         Contact::find($request->id)->delete();
         return redirect('/admin')->with('message', 'お問合せを削除しました');
     }
+
+    public function search(Request $request){
+        $contacts = Contact::with('category')
+                    ->CategorySearch($request->category_id)
+                    ->KeywordSearch($request->keyword)->paginate(7)
+                    ->appends($request->all());
+        foreach ($contacts as $contact){
+            $contact['name'] = CheckFormService::makeFullName($contact['first_name'], $contact['last_name']);
+            $contact['gender_type'] = CheckFormService::checkGender((int)$contact['gender']);
+        }
+        $categories = Category::all();
+        return view('contacts/index', compact('contacts', 'categories'));
+    }
 }
