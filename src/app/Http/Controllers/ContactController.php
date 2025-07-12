@@ -61,8 +61,7 @@ class ContactController extends Controller
         return redirect('/admin')->with('message', 'お問合せを削除しました');
     }
 
-    protected function getFilteredContacts(Request $request)
-    {
+    protected function getFilteredContacts(Request $request){
         $keyword = $request->keyword;
         $normalizedKeyword = preg_replace('/\s+/u', '', $keyword);
         $contacts =  Contact::with('category')
@@ -74,8 +73,7 @@ class ContactController extends Controller
         return $contacts;
     }
 
-    public function search(Request $request)
-    {
+    public function search(Request $request){
         $query = $this->getFilteredContacts($request);
         $contacts = $query->paginate(7)->appends($request->all());
         foreach ($contacts as $contact) {
@@ -113,7 +111,6 @@ class ContactController extends Controller
             }
             fclose($handle);
         });
-
         $filename = 'contacts_' . now()->format('Ymd_His') . '.csv';
         $response->headers->set('Content-Type', 'text/csv');
         $response->headers->set('Content-Disposition', "attachment; filename=\"$filename\"");

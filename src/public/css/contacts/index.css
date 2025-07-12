@@ -323,12 +323,12 @@ svg.w-5.h-5 {
 .modal-content {
     position: relative;
     background: white;
-    padding: 2.5em 3em;
-    width: 90%;
-    max-width: 800px;
-    border-radius: 10px;
-    box-shadow: 0 0 15px rgba(0, 0, 0, 0.3);
+    padding: 3em 4em;
+    width: 100%;
+    max-width: 700px;
+    box-shadow: 0 0 15px rgba(0, 0, 0, 0.2);
     z-index: 1001;
+    font-family: 'Inika', serif;
 }
 
 .modal-close {
@@ -368,30 +368,35 @@ svg.w-5.h-5 {
 }
 
 .modal-body {
-    padding: 1.5em 2em;
-    font-size: 17px;
-    line-height: 1.8;
+    padding: 2em;
+    font-size: 1rem;
+    line-height: 1.7;
     color: #4b3f36;
-    font-family: sans-serif;
+    font-family: 'Inika', serif;
 }
 
 .detail-row {
     display: flex;
-    margin-bottom: 1em;
-    align-items: flex-start;
+    align-items: baseline;
+    margin-bottom: 1.2em;
+    line-height: 1.5;
+    word-break: break-word;
 }
 
 .detail-label {
-    width: 150px;
+    width: 180px;
     font-weight: bold;
     color: #6f5740;
+    font-size: 1rem;
     text-align: left;
 }
 
 .detail-value {
     flex: 1;
-    color: #333;
+    color: #4b3f36;
+    font-size: 1rem;
     text-align: left;
+    white-space: pre-line;
 }
 
 .modal-footer {
@@ -400,17 +405,13 @@ svg.w-5.h-5 {
 }
 
 .delete-button {
-    background-color: #a33b00;
-    color: white;
+    background-color: #ba370d;
+    color: #ffffff;
     border: none;
-    padding: 0.6em 1.5em;
-    border-radius: 4px;
-    font-size: 14px;
+    padding: 0.7em 2em;
+    font-size: 1rem;
     cursor: pointer;
-}
-
-.delete-button:hover {
-    background-color: #c34b00;
+    transition: background-color 0.3s ease;
 }
 
 /* カレンダー入力のクリック範囲拡大用 */
