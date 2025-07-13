@@ -302,7 +302,6 @@ svg.w-5.h-5 {
 .modal-overlay {
     position: fixed;
     inset: 0;
-    background-color: rgba(0, 0, 0, 0.6);
     display: none;
     justify-content: center;
     align-items: center;
@@ -425,4 +424,10 @@ svg.w-5.h-5 {
     appearance: none;
     -webkit-appearance: none;
     background-color: #f4f4f4;
+}
+
+ /* 全体を少し縮小させて表示する */
+.contact__content {
+    transform: scale(0.9);
+    transform-origin: top center;
 }

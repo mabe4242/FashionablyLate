@@ -56,3 +56,9 @@
     color: #ffffff;
     cursor: pointer;
 }
+
+ /* 全体を少し縮小させて表示する */
+.thanks__content {
+    transform: scale(0.9);
+    transform-origin: top center;
+}

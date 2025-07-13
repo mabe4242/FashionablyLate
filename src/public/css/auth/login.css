@@ -98,3 +98,13 @@
 .form__button-submit:hover {
     background: #b7a89a;
 }
+
+ /* 全体を少し縮小させて表示する */
+.login-bg {
+    transform: scale(0.9);
+    transform-origin: top center;
+}
+
+.login__content {
+    background: #f1ece7;
+}

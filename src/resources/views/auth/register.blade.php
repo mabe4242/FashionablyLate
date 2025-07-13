@@ -11,6 +11,7 @@
 @endsection
 
 @section('content')
+<div class="register__content">
     <div class="register-bg">
         <h2 class="register-title">Register</h2>
         <div class="register-panel">
@@ -67,4 +68,5 @@
             </form>
         </div>
     </div>
+</div>
 @endsection

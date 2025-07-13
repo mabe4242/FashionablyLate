@@ -11,6 +11,7 @@
 @endsection
 
 @section('content')
+<div class="login__content">
     <div class="login-bg">
         <h2 class="login-title">Login</h2>
         <div class="login-panel">
@@ -52,4 +53,5 @@
             </form>
         </div>
     </div>
+</div>
 @endsection
