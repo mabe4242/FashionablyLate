@@ -24,40 +24,42 @@
         <div class="section__title">
             <h2>Admin</h2>
         </div>
-        <form class="search-form" action="/search" method="GET">
-            @csrf
-            <div class="search-form__item">
-                <input class="search-form__item-input" type="text" name="keyword"
-                    placeholder="名前やメールアドレスを入力してください" value="{{ request('keyword') }}" />
-                <div class="select-wrap">
-                    <select class="search-form__item-select" name="gender">
-                        <option value="">性別</option>
-                        <option value="">全て</option>
-                        <option value="1" {{ request('gender') == 1 ? 'selected' : '' }}>男性</option>
-                        <option value="2" {{ request('gender') == 2 ? 'selected' : '' }}>女性</option>
-                        <option value="3" {{ request('gender') == 3 ? 'selected' : '' }}>その他</option>
-                    </select>
+        <div class="search-form__container">
+            <form class="search-form" action="/search" method="GET">
+                @csrf
+                <div class="search-form__item">
+                    <input class="search-form__item-input" type="text" name="keyword"
+                        placeholder="名前やメールアドレスを入力してください" value="{{ request('keyword') }}" />
+                    <div class="select-wrap">
+                        <select class="search-form__item-select" name="gender">
+                            <option value="">性別</option>
+                            <option value="">全て</option>
+                            <option value="1" {{ request('gender') == 1 ? 'selected' : '' }}>男性</option>
+                            <option value="2" {{ request('gender') == 2 ? 'selected' : '' }}>女性</option>
+                            <option value="3" {{ request('gender') == 3 ? 'selected' : '' }}>その他</option>
+                        </select>
+                    </div>
+                    <div class="select-wrap">
+                        <select class="search-form__item-select" name="category_id">
+                            <option value="">お問い合わせの種類</option>
+                            @foreach ($categories as $category)
+                                <option value="{{ $category['id'] }}" {{ request('category_id') == $category->id ? 'selected' : '' }}>
+                                    {{ $category['content'] }}
+                                </option>
+                            @endforeach
+                        </select>
+                    </div>
+                    <input type="date" name="created_at" value="{{ request('created_at') }}"
+                        placeholder="年/月/日" class="search-form__item-date">
                 </div>
-                <div class="select-wrap">
-                    <select class="search-form__item-select" name="category_id">
-                        <option value="">お問い合わせの種類</option>
-                        @foreach ($categories as $category)
-                            <option value="{{ $category['id'] }}" {{ request('category_id') == $category->id ? 'selected' : '' }}>
-                                {{ $category['content'] }}
-                            </option>
-                        @endforeach
-                    </select>
+                <div class="search-form__button">
+                    <button class="search-form__button-submit" type="submit">検索</button>
                 </div>
-                <input type="date" name="created_at" value="{{ request('created_at') }}"
-                    placeholder="年/月/日" class="search-form__item-date">
-            </div>
-            <div class="search-form__button">
-                <button class="search-form__button-submit" type="submit">検索</button>
-            </div>
-            <div class="reset-button">
-                <a href="/admin" class="reset-button__text">リセット</a>
-            </div>
-        </form>
+                <div class="reset-button">
+                    <a href="/admin" class="reset-button__text">リセット</a>
+                </div>
+            </form>
+        </div>
         <div class="button-area">
             <div class="export-button">
                 <a href="{{ route('contacts.export', request()->query()) }}" class="export-button__text">エクスポート</a>
